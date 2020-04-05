@@ -30,8 +30,10 @@ public class ExampleExceptionTest {
     public static Object[][] negativeData() {
         return new Object[][]{
                 {-2, 2},
+                {-6, 10},
+                {10, -8},
                 {2, -2}
-                // TODO add 2 more test data here
+
         };
     }
 
@@ -48,6 +50,7 @@ public class ExampleExceptionTest {
             ExampleException.rectangleArea(a, b);
             fail("No exception thrown!");
         } catch (IllegalArgumentException e) {
+            assertEquals(e.getMessage(), "input value is bellow zero!");
         }
     }
 }
