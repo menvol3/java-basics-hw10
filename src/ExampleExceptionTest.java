@@ -14,9 +14,10 @@ public class ExampleExceptionTest {
   @DataProvider(name = "data")
   public static Object[][] data() {
     return new Object[][]{
+        {4, 8, 32},
+        {5, 10, 50},
         {2, 2, 4},
         {2, 3, 6}
-        // TODO add 2 more test data here
     };
   }
 
@@ -35,13 +36,15 @@ public class ExampleExceptionTest {
   }
 
   @Test(dataProvider = "data")
-  public void testRectangleArea(int a, int b, int c) {
-    // TODO put your code here
+  public static void testRectangleArea(int a, int b, int c) {
+    int area =  ExampleException.rectangleArea(a, b);
+    assertEquals(area, c, "Area is not correct");
   }
 
 
   @Test(dataProvider = "negativeData")
-  public void testRectangleAreaNegative(int a, int b) {
-    // TODO put your code here
+  public void testRectangleAreaNegative(int a, int b)  {
+    int actualResult = ExampleException.rectangleArea(a, b);
+    throw new IllegalArgumentException ("input value is below zero!");
+    }
   }
-}
